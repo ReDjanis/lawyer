@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" promptOnRemoteOverwrite="CHECK_TIMESTAMP" createEmptyFolders="true" exclude=".svn;.cvs;.idea;*.bmp;*.webp;*.gz;node_modules;cache;logs;upload;images;.DS_Store;.git;.hg;*.hprof;*.pyc;.idea;.DS_Store;.git;.tar;*.zip;*.7z;*.RAR;*.rar;*.CAB;*.cab;*.arj;*.lzn;*.ace;*.gzip;*.uue;*.ico;*.bzip2;*.z;*.mp4;*.3gp;*.asf;*.avi;*.flv;*.mkv;*.mov;*.qt;*.smk;*.mp3;*.waw;*.wma;*.pdf;*.gif;*.png;*.jpg;*.jpeg;*.gif;*.log;error_log;*.woff;*.ttf;*.eot;*.svg" remoteFilesAllowedToDisappearOnAutoupload="false" notifyRemoteChanges="true" />
+</project>

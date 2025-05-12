@@ -1,0 +1,82 @@
+$color_white: #ffffff;
+$color_2: #e7f5e0;
+$color_3: #14253D;
+$color_4: #151c2b;
+$color_5: #768795;
+$color_blue: #2a577e;
+$color_blue2: #436c8f;
+$color_light_gray: #d5d5d5;
+$color_light_blue: #D9E8F2;
+$color_black: #000000;
+$color_anthracite: #292929;
+$color_accent: #C14456;
+$color_accent2: #fd4660;
+
+$color_gradient_1: #bdc3c7;
+$color_gradient_2: #2c3e50;
+
+$font_main: 'Merriweather', serif;
+$font_additional: 'Playfair Display', serif;
+
+@use 'sass:math';
+@mixin fonts($fz, $lh, $fw: 400) {
+  font-size: $fz;
+  line-height: $lh;
+  font-weight: $fw;
+}
+
+@function strip-unit($number) {
+  @if type-of($number)=='number'and not unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+
+  @return $number;
+}
+
+@function calcFluidFontSize($f-min, $f-max, $w-min, $w-max, $units: px) {
+  $f-min: strip-unit($f-min);
+  $f-max: strip-unit($f-max);
+  $w-min: strip-unit($w-min);
+  $w-max: strip-unit($w-max);
+
+  $k: calc(($f-max - $f-min)/($w-max - $w-min));
+  $b: $f-min - $k * $w-min;
+
+  $b: $b + $units;
+
+  @return calc(#{$k} * 100vw + #{$b});
+}
+
+@function calcFluidLineHeight($lh-min, $lh-max, $w-min, $w-max, $units: px) {
+  $lh-min: strip-unit($lh-min);
+  $lh-max: strip-unit($lh-max);
+  $w-min: strip-unit($w-min);
+  $w-max: strip-unit($w-max);
+
+  $k: calc(($lh-max - $lh-min)/($w-max - $w-min));
+  $b: $lh-min - $k * $w-min;
+
+  $b: $b + $units;
+
+  @return calc(#{$k} * 100vw + #{$b});
+}
+
+@mixin fluidFont($f-min, $f-max, $lh-min, $lh-max, $w-min, $w-max, $fallback: false) {
+
+  font-size: $f-min;
+  line-height: $lh-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      font-size: $fallback;
+    }
+
+    font-size: calcFluidFontSize($f-min, $f-max, $w-min, $w-max);
+    line-height: calcFluidLineHeight($lh-min, $lh-max, $w-min, $w-max);
+  }
+
+  @media (min-width: $w-max) {
+    font-size: $f-max;
+    line-height: $lh-max;
+  }
+}
