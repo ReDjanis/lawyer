@@ -1,6 +1,6 @@
 'use strict'
 // Функция для подгрузки контента
-async function loadContent(url) {
+/*async function loadContent(url) {
     try {
         const response = await fetch(url, {
             headers: {
@@ -47,8 +47,7 @@ if (location.pathname !== '/' && location.pathname !== '/index.html') {
     const fragmentUrl = fragmentMap[location.pathname] || '/fragments/index-content.html';
     loadContent(fragmentUrl);
 }
-
-
+*/
 let header = document.querySelector('.header');
 
 window.addEventListener('scroll', function (e) {
